@@ -119,11 +119,9 @@ if __name__ == "__main__":
     shapes = read_shapes("input01.txt")
     max_area_shape, max_perimeter_shape = find_max_shapes(shapes)
 
-    # Виведення результатів у консоль
     print(f"Фігура з найбільшою площею: {type(max_area_shape).__name__}, площа: {max_area_shape.area():.2f}")
     print(f"Фігура з найбільшим периметром: {type(max_perimeter_shape).__name__}, периметр: {max_perimeter_shape.perimeter():.2f}")
 
-    # Запис результатів у файл results.txt
     with open("results.txt", "w") as result_file:
         result_file.write(f"Фігура з найбільшою площею: {type(max_area_shape).__name__}, площа: {max_area_shape.area():.2f}\n")
         result_file.write(f"Фігура з найбільшим периметром: {type(max_perimeter_shape).__name__}, периметр: {max_perimeter_shape.perimeter():.2f}\n")

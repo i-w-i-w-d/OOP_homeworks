@@ -28,9 +28,8 @@ class Solver:
     def solve(matrix, vector):
         det = matrix.determinant()
         if det == 0:
-            return None  # Вироджена матриця, розв'язку немає
+            return None
 
-        # Створення матриць для знаходження x та y
         matrix_x = [[vector.x, matrix.elements[0][1]],
                     [vector.y, matrix.elements[1][1]]]
 
@@ -51,26 +50,21 @@ def main():
     rhs_file = "rhs_values.txt"
     output_file = "output.txt"
 
-    # Зчитування даних із файлів
     with open(coefficients_file, "r") as file:
         coefficients_lines = file.readlines()
 
     with open(rhs_file, "r") as file:
         rhs_lines = file.readlines()
 
-    # Виведення результатів у файл
     with open(output_file, "w") as output:
         output.write("Результати для систем рівнянь:\n")
         for coeff_line, rhs_line in zip(coefficients_lines, rhs_lines):
-            # Створення матриці коефіцієнтів
             matrix = Matrix2D()
             matrix.input_from_file(coeff_line)
 
-            # Створення вектора правих частин
             vector = Vector2D()
             vector.input_from_file(rhs_line)
 
-            # Розв'язання системи рівнянь
             solution = Solver.solve(matrix, vector)
             if solution:
                 output.write(f"Матриця: {matrix.elements}, права частина: ({vector.x}, {vector.y})\n")
